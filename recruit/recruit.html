@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Hiring Form</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+            }
+
+            form {
+                background-color: #fff;
+                padding: 20px;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                max-width: 600px;
+                width: 100%;
+            }
+
+            label {
+                font-weight: bold;
+                margin-top: 10px;
+                display: block;
+            }
+
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin: 5px 0;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+            input[type="file"] {
+                margin-top: 10px;
+            }
+
+            input[type="submit"] {
+                background-color: #7793d9;
+                color: white;
+                padding: 14px 20px;
+                margin: 10px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                width: 100%;
+            }
+
+            input[type="submit"]:hover {
+                background-color: #45a049;
+            }
+
+            .graphic {
+                position: absolute;
+                top: 10%;
+                left: -50px;
+                transform-origin: center;
+                transform-style: preserve-3d;
+                transform: rotateY(45deg);
+                z-index: -1;
+                pointer-events: none;
+                transition: .5s;
+                border-radius: 50px;
+            }
+
+            .required-field:after {
+                content: " *";
+                color: red;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <img src="../../../hiring.png" alt="3D Graphic" class="graphic" style="width: 600px;height: 500px;">
+
+        <form id="hiringForm" style="margin-left: 290px;">
+            <label for="fullName">Full Name<span class="required-field"></span></label>
+            <input type="text" id="fullName" name="fullName" required>
+
+            <label for="email">Email<span class="required-field"></span></label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone<span class="required-field"></span></label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="exp">Total Experience<span class="required-field"></span></label>
+            <input type="text" id="exp" name="exp" required>
+
+            <label for="expectedSalary">Expected Salary<span class="required-field"></span></label>
+            <input type="number" id="expectedSalary" name="expectedSalary" required>
+
+            <label for="currentSalary">Current Salary<span class="required-field"></span></label>
+            <input type="number" id="currentSalary" name="currentSalary" required>
+
+            <label for="resume">LinkedIn Profile (Link only)<span class="required-field"></span></label>
+            <input type="text" id="resume" name="resume" required>
+
+            <label for="whyHire">Why should we hire you?<span class="required-field"></span></label>
+            <textarea id="whyHire" name="whyHire" required></textarea>
+
+            <input type="submit" value="Submit">
+
+            <button
+                style=" margin-top: 30px;background-color: #e6e6e6; border: none; border-radius: 5px;width: 200px;height: 30px;">
+                <a style="      text-decoration: none; color: black;    
+" href="../../../index.html"> Back to Home
+                    Page </a> </button>
+
+        </form>
+
+        <script>
+            document.getElementById("hiringForm").addEventListener("submit", function (event) {
+                event.preventDefault();
+                const formData = new FormData(this);
+                const xhr = new XMLHttpRequest();
+
+                // Check if all required fields are filled
+                let isValid = true;
+                const requiredFields = document.querySelectorAll('[required]');
+                requiredFields.forEach(field => {
+                    if (!field.value.trim()) {
+                        isValid = false;
+                        field.parentNode.querySelector('.required-field').style.visibility = 'visible';
+                    } else {
+                        field.parentNode.querySelector('.required-field').style.visibility = 'hidden';
+                    }
+                });
+
+                if (isValid) {
+                    xhr.open("POST", "https://formsubmit.co/ajax/bilal095847@gmail.com", true);
+                    xhr.onload = function () {
+                        if (xhr.status === 200) {
+                            alert("Form submitted successfully. Thank You for Applying! We'll reach back to you shortly.");
+                        } else {
+                            alert("There was an error submitting the form. Please try again.");
+                        }
+                    };
+                    xhr.send(formData);
+                } else {
+                    alert("Please fill in all required fields.");
+                }
+            });
+        </script>
+
+    </body>
+
+</html>
