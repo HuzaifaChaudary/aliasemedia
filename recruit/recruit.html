@@ -4,13 +4,14 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Hiring Form</title>
+        <title>Aliase Media - Hiring Form</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
-                background-color: #f4f4f4;
-                margin: 0;
-                padding: 0;
+                background-image: linear-gradient(to right, rgb(202, 178, 178) 20%, rgb(134, 134, 216) 80%);
+            }
+
+            .centering {
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -63,19 +64,6 @@
                 background-color: #45a049;
             }
 
-            .graphic {
-                position: absolute;
-                top: 10%;
-                left: -50px;
-                transform-origin: center;
-                transform-style: preserve-3d;
-                transform: rotateY(45deg);
-                z-index: -1;
-                pointer-events: none;
-                transition: .5s;
-                border-radius: 50px;
-            }
-
             .required-field:after {
                 content: " *";
                 color: red;
@@ -84,43 +72,40 @@
     </head>
 
     <body>
+        <div class="centering">
+            <form id="hiringForm">
+                <label for="fullName">Full Name<span class="required-field"></span></label>
+                <input type="text" id="fullName" name="fullName" required>
 
-        <img src="../../../hiring.png" alt="3D Graphic" class="graphic" style="width: 500px;height: 400px;">
+                <label for="email">Email<span class="required-field"></span></label>
+                <input type="email" id="email" name="email" required>
 
-        <form id="hiringForm" style="margin-top: 10%;">
-            <label for="fullName">Full Name<span class="required-field"></span></label>
-            <input type="text" id="fullName" name="fullName" required>
+                <label for="phone">Phone<span class="required-field"></span></label>
+                <input type="text" id="phone" name="phone" required>
 
-            <label for="email">Email<span class="required-field"></span></label>
-            <input type="email" id="email" name="email" required>
+                <label for="exp">Total Experience<span class="required-field"></span></label>
+                <input type="text" id="exp" name="exp" required>
 
-            <label for="phone">Phone<span class="required-field"></span></label>
-            <input type="text" id="phone" name="phone" required>
+                <label for="expectedSalary">Expected Salary<span class="required-field"></span></label>
+                <input type="number" id="expectedSalary" name="expectedSalary" required>
 
-            <label for="exp">Total Experience<span class="required-field"></span></label>
-            <input type="text" id="exp" name="exp" required>
+                <label for="currentSalary">Current Salary<span class="required-field"></span></label>
+                <input type="number" id="currentSalary" name="currentSalary" required>
 
-            <label for="expectedSalary">Expected Salary<span class="required-field"></span></label>
-            <input type="number" id="expectedSalary" name="expectedSalary" required>
+                <label for="resume">LinkedIn Profile (Link only)<span class="required-field"></span></label>
+                <input type="text" id="resume" name="resume" required>
 
-            <label for="currentSalary">Current Salary<span class="required-field"></span></label>
-            <input type="number" id="currentSalary" name="currentSalary" required>
+                <label for="whyHire">Why should we hire you?<span class="required-field"></span></label>
+                <textarea id="whyHire" name="whyHire" required></textarea>
 
-            <label for="resume">LinkedIn Profile (Link only)<span class="required-field"></span></label>
-            <input type="text" id="resume" name="resume" required>
+                <input type="submit" value="Submit" style="font-size: 18px;font-weight: 600;color: white;">
 
-            <label for="whyHire">Why should we hire you?<span class="required-field"></span></label>
-            <textarea id="whyHire" name="whyHire" required></textarea>
-
-            <input type="submit" value="Submit">
-
-            <button
-                style=" margin-top: 30px;background-color: #e6e6e6; border: none; border-radius: 5px;width: 200px;height: 30px;">
-                <a style="      text-decoration: none; color: black;    
-" href="../../../index.html"> Back to Home
-                    Page </a> </button>
-
-        </form>
+                <button
+                    style="margin-top: 30px;background-color: #e6e6e6; border: none; border-radius: 5px;width: 200px;height: 30px;">
+                    <a style="text-decoration: none; color: black;" href="../../../index.html"> Back to Home Page </a>
+                </button>
+            </form>
+        </div>
 
         <script>
             document.getElementById("hiringForm").addEventListener("submit", function (event) {
@@ -155,7 +140,6 @@
                 }
             });
         </script>
-
     </body>
 
 </html>
